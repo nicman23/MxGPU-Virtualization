@@ -52,6 +52,12 @@
 
 #define TIME_FMRT "%04d-%02d-%02d %02d:%02d:%02d\n"
 
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+#define RTC_TIME_TO_TM rtc_time_to_tm
+#else
+#define RTC_TIME_TO_TM rtc_time64_to_tm
+#endif
+
 static
 unsigned short asic_type_table[AMDGIM_ASIC_TYPE_LEN][AMDGIM_ASIC_PCI_LEN] = {
 	[AMDGIM_ASIC_TYPE_UNKNOWN] = {
@@ -1740,7 +1746,7 @@ static int amdgim_op2str_gpuvf_vf(void *obj, char *str)
 
 	/* init start */
 	if (vfdetail->time_log.init_start.tv_sec > 0) {
-		rtc_time_to_tm(vfdetail->time_log.init_start.tv_sec
+		RTC_TIME_TO_TM(vfdetail->time_log.init_start.tv_sec
 				- sys_tz.tz_minuteswest * 60, &tm);
 		sprintf(buf, "\t\tVF Last Init Start:" TIME_FMRT,
 				tm.tm_year + 1900,
@@ -1756,7 +1762,7 @@ static int amdgim_op2str_gpuvf_vf(void *obj, char *str)
 
 	/* init end */
 	if (vfdetail->time_log.init_end.tv_sec > 0) {
-		rtc_time_to_tm(vfdetail->time_log.init_end.tv_sec
+		RTC_TIME_TO_TM(vfdetail->time_log.init_end.tv_sec
 				- sys_tz.tz_minuteswest * 60, &tm);
 		sprintf(buf, "\t\tVF Last Init Finish:" TIME_FMRT,
 				tm.tm_year + 1900,
@@ -1772,7 +1778,7 @@ static int amdgim_op2str_gpuvf_vf(void *obj, char *str)
 
 	/* finish start */
 	if (vfdetail->time_log.finish_start.tv_sec > 0) {
-		rtc_time_to_tm(vfdetail->time_log.finish_start.tv_sec
+		RTC_TIME_TO_TM(vfdetail->time_log.finish_start.tv_sec
 				- sys_tz.tz_minuteswest * 60, &tm);
 		sprintf(buf, "\t\tVF Last Shutdown Start:" TIME_FMRT,
 				tm.tm_year + 1900,
@@ -1787,7 +1793,7 @@ static int amdgim_op2str_gpuvf_vf(void *obj, char *str)
 	strcat(str, buf);
 	/* finish end */
 	if (vfdetail->time_log.finish_end.tv_sec > 0) {
-		rtc_time_to_tm(vfdetail->time_log.finish_end.tv_sec
+		RTC_TIME_TO_TM(vfdetail->time_log.finish_end.tv_sec
 				- sys_tz.tz_minuteswest * 60, &tm);
 		sprintf(buf,
 			"\t\tVF Last Shutdown Finish:" TIME_FMRT,
@@ -1804,7 +1810,7 @@ static int amdgim_op2str_gpuvf_vf(void *obj, char *str)
 
 	/* reset time */
 	if (vfdetail->time_log.reset_time.tv_sec > 0) {
-		rtc_time_to_tm(vfdetail->time_log.reset_time.tv_sec
+		RTC_TIME_TO_TM(vfdetail->time_log.reset_time.tv_sec
 				 - sys_tz.tz_minuteswest * 60,
 				 &tm);
 		sprintf(buf,
