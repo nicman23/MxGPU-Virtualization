@@ -954,7 +954,7 @@ static int amdgim_op_gpuvf_vf(char *param, void *obj, void *result)
 	struct function *p_func;
 	struct partition *part;
 	struct adapter *p_adapter;
-	struct timespec kernel_time;
+	struct TIMESPECTYPE kernel_time;
 	struct amdgim_vf_detail *vfdetail;
 
 	p_func = (struct function *)obj;
@@ -1010,7 +1010,7 @@ static int amdgim_op_gpuvf_vf(char *param, void *obj, void *result)
 		 */
 		if (vfdetail->gpu_active_vf == 1
 			&& p_adapter->switch_to_itself == false) {
-			getnstimeofday(&kernel_time);
+			GETNSTIMEOFDAY(&kernel_time);
 			vfdetail->vf_active_section += kernel_time.tv_sec
 				 - p_func->time_log.active_last_tick.tv_sec;
 		}
