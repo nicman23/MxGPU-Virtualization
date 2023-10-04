@@ -1,3 +1,14 @@
+#Above because lazy
+
+got this working on 6.5 worked pretty easily with looking glass
+
+get guest drvs from https://www.amd.com/en/support/professional-graphics/firepro/firepro-s-series/firepro-s7150-active-cooling 
+
+blacklist amdgpu or set it to ignore the device
+
+on libvirt just dont select the host / real gpu for vfio; select the vgpus
+
+
 # GIM
 
 ```javascript

@@ -36,6 +36,7 @@
 #include <linux/mod_devicetable.h>
 #include <linux/fs.h>
 #include <linux/sched.h>
+#include <linux/dma-mapping.h>
 
 #include "gim_adapter.h"
 #include "gim_os_service.h"
@@ -694,7 +695,7 @@ uint32_t set_new_adapter(struct pci_dev *pdev)
 		write_register(pf, mmSMU_IND_INDEX_0, 0);
 
 		/* Set the dma mask to be 40 bits address range */
-		pci_set_dma_mask(curr->pf.pci_dev, 0xffffffffffull);
+		dma_set_mask(&curr->pf.pci_dev->dev, 0xffffffffffull);
 
 		/* interrupt */
 		size = sizeof(struct interrupt_handler);

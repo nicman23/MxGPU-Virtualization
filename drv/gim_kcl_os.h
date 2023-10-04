@@ -36,7 +36,7 @@ void *kcl_mem_alloc_page(void);
 void kcl_mem_free_page(void *p);
 void *kcl_mem_alloc_page_size(unsigned int page_count);
 void *kcl_mem_map_page_list(unsigned long *pagelist, unsigned int count);
-unsigned long long kcl_map_page(struct pci_dev *pci_dev, unsigned long p);
+//unsigned long long kcl_map_page(struct pci_dev *pci_dev, unsigned long p);
 void kcl_mem_unmap(void *addr);
 unsigned long long kcl_get_page_ma(unsigned long p);
 unsigned long long kcl_virt_to_pa(unsigned int *p);

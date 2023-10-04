@@ -69,11 +69,11 @@ void *kcl_mem_map_page_list(unsigned long *pagelist, unsigned int count)
 	return vaddr;
 }
 
-unsigned long long kcl_map_page(struct pci_dev *pci_dev, unsigned long p)
-{
-	return pci_map_page(pci_dev, (struct page *)p, 0,
-					PAGE_SIZE, PCI_DMA_BIDIRECTIONAL);
-}
+//unsigned long long kcl_map_page(struct pci_dev *pci_dev, unsigned long p)
+//{
+//	return pci_map_page(pci_dev, (struct page *)p, 0,
+//					PAGE_SIZE, PCI_DMA_BIDIRECTIONAL);
+//}
 
 void kcl_mem_unmap(void *addr)
 {

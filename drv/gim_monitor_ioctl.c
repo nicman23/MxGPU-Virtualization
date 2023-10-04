@@ -290,7 +290,7 @@ int amdgim_create_cdev(void)
 		goto fail_cdevadd;
 	}
 
-	amdgim_class = class_create(THIS_MODULE, AMDGIM_CLASS_NAME);
+	amdgim_class = class_create(AMDGIM_CLASS_NAME);
 	device_create(amdgim_class, NULL, MKDEV(amdgim_pdev->major, 0),
 			NULL, AMDGIM_DEVICE_FILE_NAME);
 
