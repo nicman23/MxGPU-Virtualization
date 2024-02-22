@@ -8,7 +8,7 @@ blacklist amdgpu or set it to ignore the device
 
 on libvirt just dont select the host / real gpu for vfio; select the vgpus
 
-
+ALSO: the gpu needs CSM to be enabled in mb's uefi settings
 # GIM
 
 ```javascript
