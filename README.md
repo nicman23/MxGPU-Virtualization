@@ -1,3 +1,6 @@
+#aboverr because lazy
+pc-q35-4.2 through pc-q35-8.0 work, 8.2 did not	
+
 #Above because lazy
 
 got this working on 6.5 worked pretty easily with looking glass
